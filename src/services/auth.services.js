@@ -2,7 +2,7 @@ import { users } from "../models/index.js";
 import * as dotenv from "dotenv";
 import { compareSync } from "bcrypt";
 dotenv.config();
-import { sign } from "jsonwebtoken";
+import JWT from "jsonwebtoken";
 // eslint-disable-next-line no-undef
 const secret = process.env.JWTSECRET;
 export class AuthServices {
@@ -35,7 +35,7 @@ export class AuthServices {
   }
   static genToken(data) {
     try {
-      const token = sign(data, secret, {
+      const token = JWT.sign(data, secret, {
         expiresIn: "24hrs",
         algorithm: "HS512",
       });
