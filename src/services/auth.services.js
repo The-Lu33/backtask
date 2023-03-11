@@ -27,7 +27,6 @@ export class AuthServices {
         const isValid = compareSync(password, user.password);
         return isValid ? { isValid, user } : { isValid };
       }
-      // return { isValid: false };
     } catch (error) {
       console.log(error);
       throw error;

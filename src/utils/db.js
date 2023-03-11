@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Sequelize } from "sequelize";
 import * as dotenv from "dotenv";
 dotenv.config();
@@ -9,6 +10,9 @@ const db = new Sequelize({
   password: process.env.DB_PASSWORD,
   dialect: "postgres",
   logging: false,
+  dialectOptions: {
+    ssl: { require: true, rejectUnauthorized: false },
+  },
 });
 
 export default db;
